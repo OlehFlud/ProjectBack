@@ -7,3 +7,4 @@ const {user , pages} = require('../../controllers');
 router.post('/',userMiddleware.checkUserLoginMiddleware,user.loginUser );
 
 module.exports = router;
+

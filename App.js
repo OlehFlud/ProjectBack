@@ -1,7 +1,7 @@
 const express = require('express');
 const socketio = require('socket.io');
 const http = require('http');
-const {resolve} = require('path');
+const path = require('path');
 const fileUpload = require('express-fileupload');
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -18,7 +18,7 @@ app.use(fileUpload({}));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-app.use(express.static(resolve(__dirname,'public')));
+app.use('/static', express.static(__dirname+'/public'));
 global.appRoot = __dirname;
 
 

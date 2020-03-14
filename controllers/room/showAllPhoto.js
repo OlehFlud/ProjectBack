@@ -1,16 +1,14 @@
-module.exports = async  function(req, res) {
-    let fs = require('fs');
+const dataBase = require('../../dataBase').getInstance();
 
-    fs.readFile('./public/room', function(error, content) {
-        if (error) {
-            res.writeHead(500);
-            res.end();
+module.exports = async (req, res) => {
+    try {
+        // const RoomModel = dataBase.getModel('Room');
 
-        }
-        else {
-            res.writeHead(200, { 'Content-Type': 'image/png' });
-            res.end(content, 'utf-8');
-        }
-    });
+        // const findAll = await RoomModel.find()
 
+
+    }
+    catch (e) {
+        res.status(400).json(e.message)
+    }
 };

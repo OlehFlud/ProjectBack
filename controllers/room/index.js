@@ -4,6 +4,7 @@ const deleteRoom = require('./deleteRoom');
 const updateRoom = require('./updateRoom');
 const showAllPhoto = require('./showAllPhoto');
 const reserveRoom = require('./reserveRoom');
+const getRoomById = require('./getRoomById');
 
 module.exports = {
     createRoom,
@@ -11,5 +12,6 @@ module.exports = {
     deleteRoom,
     updateRoom,
     showAllPhoto,
-    reserveRoom
+    reserveRoom,
+    getRoomById
 };

@@ -16,13 +16,14 @@ module.exports = async (req, res) => {
         roomToCreate.status_id = ROOM_STATUS.NOT_RESERVED;
 
         const {id} = await roomsService.createRoom(roomToCreate, room_id);
-        const photoDir = resolve(appRoot, 'public', 'room');
+        const photoDir = appRoot + `/public/room`;
         const photoExtensive = photo.name.split('.').pop();
-        const photoPath = resolve(photoDir, `${uuid}.${photoExtensive}`);
 
         await fs.mkdirSync(resolve(photoDir), {recursive: true});
 
-        await photo.mv(photoPath);
+        const photoName = `${uuid}.${photoExtensive}`;
+        await photo.mv(resolve(photoDir,photoName));
+        const photoPath = `room/${photoName}`;
 
         await roomsService.updateRoomByParams({photo_path: photoPath}, {id});
 
