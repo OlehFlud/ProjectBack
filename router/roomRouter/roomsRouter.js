@@ -13,7 +13,6 @@ router.get('/findAll', room.findAll);
 
 router.get('/findAll/:room_id',roomMiddleware.checkIsRoomPresentMiddleware, room.getRoomById);
 
-
 router.patch('/reserve/:room_id', room.reserveRoom);
 
 router.delete('/:room_id', room.deleteRoom);
