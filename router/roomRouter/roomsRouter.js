@@ -7,7 +7,6 @@ router.post('/',
     filesMiddleware.checkFileMiddleware,
     room.createRoom,);
 
-router.get('/showAllPhoto', room.showAllPhoto);
 
 router.get('/findAll', room.findAll);
 

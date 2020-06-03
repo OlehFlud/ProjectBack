@@ -1,8 +1,11 @@
-module.exports = userObject => {
-    const {name,surname, email, password} = userObject;
+const Joi = require('joi');
 
-    if (!name || !surname || !email || !password) {
-        throw new Error('userMiddleware object is not valid')
-    }
+const {REGEX} = require('../../constant');
 
-};
+module.exports = Joi.object().keys({
+
+    name: Joi.string().trim().min(2).max(60),
+    surname: Joi.string().trim().min(2).max(60),
+    email: Joi.string().regex(REGEX.EMAIL).required(),
+    password: Joi.string().regex(REGEX.PASSWORD).required()
+});

@@ -39,11 +39,26 @@ io.on('connection', (socket) => {
     })
 });
 
-let {usersRouter, authRouter, adminRouter, roomsRouter} = require('./router');
+let {usersRouter, authRouter, roomsRouter} = require('./router');
 app.use('/user', usersRouter);
 app.use('/auth', authRouter);
-app.use('/admin', adminRouter);
 app.use('/room', roomsRouter);
 
+// app.use('*', (err, req, res, next)=>{
+//    res
+//        .status(err.status || 400)
+//        .json({
+//            message: err.message,
+//            code: err.customCode
+//        })
+// });
 
 server.listen(PORT, () => console.log(`Server has been started on port ${PORT}`));
+
+
+process.on("unhandledRejection",reason =>{
+    console.log("------------------------------");
+    console.log(reason);
+    console.log("------------------------------");
+    process.exit(0)
+});
