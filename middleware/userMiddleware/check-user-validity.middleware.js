@@ -10,14 +10,14 @@ module.exports = (req, res, next) => {
 
         const {error} = Joi.validate(user, userValidationSchema);
 
-        if (error){
+        if (error) {
 
-            return next(new ErrorHandler(error.details[0].message,400))
+            return next(new ErrorHandler(error.details[0].message, 400))
         }
 
-        console.log('________________________________');
-        console.log(error.details[0].message);
-        console.log('________________________________');
+        // console.log('________________________________');
+        // console.log(error.details[0].message);
+        // console.log('________________________________');
 
         next()
 

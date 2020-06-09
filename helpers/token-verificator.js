@@ -8,6 +8,7 @@ module.exports = token => {
 
         if (err) {
             throw new Error('Token is not valid')
+
         }
         user = decoded;
         console.log(decoded);

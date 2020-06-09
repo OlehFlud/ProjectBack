@@ -4,10 +4,14 @@ const http = require('http');
 const path = require('path');
 const fileUpload = require('express-fileupload');
 const morgan = require('morgan');
-const PORT = process.env.PORT || 5000;
+// const PORT = process.env.PORT || 5000;
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
+const dotenv = require('dotenv')
+dotenv.config()
+
+const {PORT} = require('./config/config')
 
 const db = require('./dataBase').getInstance();
 db.setModels();
@@ -24,7 +28,6 @@ app.use(express.urlencoded({extended: true}));
 
 app.use('/static', express.static(__dirname+'/public'));
 global.appRoot = __dirname;
-
 
 
 app.use(function (req, res, next) {

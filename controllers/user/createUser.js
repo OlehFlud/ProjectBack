@@ -1,6 +1,6 @@
-const {usersService} = require('../../service');
+const {usersService, emailService} = require('../../service');
 const {passwordHashed} = require('../../helpers');
-const {USER_ROLES,USER_STATUS} = require('../../constant');
+const {USER_ROLES, USER_STATUS, EMAIL_ACTION} = require('../../constant');
 
 module.exports = async (req, res) => {
     try {
@@ -14,7 +14,9 @@ module.exports = async (req, res) => {
         userToCreate.status_id = USER_STATUS.ACTIVE;
 
         await usersService.createUser(userToCreate, user_id);
-
+        await emailService.emailService.sendMail(userToCreate.email, EMAIL_ACTION.USER_REGISTER,
+            {userName: userToCreate.name}
+        );
         res.json('created');
 
     } catch (e) {
