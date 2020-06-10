@@ -22,13 +22,11 @@ app.use(morgan('dev'));
 
 app.use(fileUpload({}));
 
-
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 app.use('/static', express.static(__dirname+'/public'));
 global.appRoot = __dirname;
-
 
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");

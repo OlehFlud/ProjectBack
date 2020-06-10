@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "claudia create --version dev --region us-east-1 --api-module api"
+    "deploy": "claudia create --version dev --region us-east-1 --api-module api",
+    "dev": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +25,7 @@
     "morgan": "^1.10.0",
     "mysql2": "^1.7.0",
     "nodemailer": "latest",
+    "nodemon": "^2.0.4",
     "pug": "^3.0.0",
     "sequelize": "^5.19.6",
     "uuid": "^3.4.0",
@@ -38,6 +40,7 @@
     "@types/joi": "^14.3.4",
     "@types/sequelize": "^4.28.5",
     "@types/morgan": "^1.9.0",
-    "@types/email-templates": "^7.0.1"
+    "@types/email-templates": "^7.0.1",
+    "@types/nodemon": "^1.19.0"
   }
 }
