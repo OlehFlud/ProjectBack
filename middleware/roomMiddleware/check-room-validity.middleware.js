@@ -13,9 +13,9 @@ module.exports = (req, res, next) => {
             return next(new ErrorHandler(error.details[0].message,400))
         }
 
-        console.log('_______________________________');
-        console.log(error.details[0].message);
-        console.log('_______________________________');
+        // console.log('_______________________________');
+        // console.log(error.details[0].message);
+        // console.log('_______________________________');
 
         next()
     }   catch (e) {

@@ -1,7 +1,7 @@
 const {roomsService} = require('../../service');
 const {room} = require('../../controllers');
 const {ROOM_STATUS} = require('../../constant');
-const {resolve} = require('path');
+const path = require('path');
 const fs = require('fs-extra');
 const uuid = require('uuid').v1();
 
@@ -16,14 +16,15 @@ module.exports = async (req, res) => {
         roomToCreate.status_id = ROOM_STATUS.NOT_RESERVED;
 
         const {id} = await roomsService.createRoom(roomToCreate, room_id);
-        const photoDir = resolve(appRoot, 'public', 'room');
+        // const photoDir = resolve(appRoot, 'public', 'room');
+        const photoDir = `rooms/${id}/photos`;
         const photoExtensive = photo.name.split('.').pop();
         const photoName = `${uuid}.${photoExtensive}`;
-        await photo.mv(resolve(photoDir,photoName));
+        const photoPath = `rooms/${id}/photos/${photoName}`;
 
-        const photoPath = `room/${photoName}`;
+        await fs.mkdir(path.resolve(process.cwd(),'public', photoDir), {recursive: true});
 
-        await fs.mkdirSync(resolve(photoDir), {recursive: true});
+        await photo.mv(path.resolve(process.cwd(),'public',photoDir,photoName));
 
         await roomsService.updateRoomByParams({photo_path: photoPath}, {id});
 
