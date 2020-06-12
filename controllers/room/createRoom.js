@@ -16,7 +16,6 @@ module.exports = async (req, res) => {
         roomToCreate.status_id = ROOM_STATUS.NOT_RESERVED;
 
         const {id} = await roomsService.createRoom(roomToCreate, room_id);
-        // const photoDir = resolve(appRoot, 'public', 'room');
         const photoDir = `rooms/${id}/photos`;
         const photoExtensive = photo.name.split('.').pop();
         const photoName = `${uuid}.${photoExtensive}`;
