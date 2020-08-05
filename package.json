@@ -18,7 +18,7 @@
     "ejs": "^3.0.1",
     "email-templates": "^7.0.5",
     "express": "^4.17.1",
-    "express-fileupload": "^1.1.6",
+    "express-fileupload": "^1.1.9",
     "express-handlebars": "^3.1.0",
     "fs-extra": "^8.1.0",
     "joi": "^14.3.1",
