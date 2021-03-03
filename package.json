@@ -28,7 +28,7 @@
     "node-cron": "^2.0.3",
     "nodemailer": "latest",
     "nodemon": "^2.0.4",
-    "pug": "^3.0.0",
+    "pug": "^3.0.1",
     "sequelize": "^5.19.6",
     "socket.io": "^2.3.0",
     "uuid": "^3.4.0"
